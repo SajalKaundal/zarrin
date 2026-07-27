@@ -14,8 +14,16 @@ export default async function WebsiteLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const navbar = await client.fetch<NAV_BAR_QUERY_RESULT>(NAV_BAR_QUERY);
-  const footer = await client.fetch<FOOTER_QUERY_RESULT>(FOOTER_QUERY);
+  const navbar = await client.fetch<NAV_BAR_QUERY_RESULT>(
+    NAV_BAR_QUERY,
+    {},
+    { next: { revalidate: 60 } },
+  );
+  const footer = await client.fetch<FOOTER_QUERY_RESULT>(
+    FOOTER_QUERY,
+    {},
+    { next: { revalidate: 60 } },
+  );
   return (
     <>
       <NavBar navbar={navbar} />

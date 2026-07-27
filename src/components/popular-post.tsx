@@ -18,8 +18,11 @@ type PopularPostProps = {
 };
 
 async function PopularPost({ section, currentPost }: PopularPostProps) {
-  const queryResult =
-    await client.fetch<POPULAR_POST_QUERY_RESULT>(POPULAR_POST_QUERY);
+  const queryResult = await client.fetch<POPULAR_POST_QUERY_RESULT>(
+    POPULAR_POST_QUERY,
+    {},
+    { next: { revalidate: 60 } },
+  );
 
   let popularPost = queryResult.slice(0, section.postCount);
 

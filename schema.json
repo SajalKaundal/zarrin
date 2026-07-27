@@ -1031,6 +1031,13 @@
           },
           "optional": true
         },
+        "isFeaturedVisible": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        },
         "blog": {
           "type": "objectAttribute",
           "value": {

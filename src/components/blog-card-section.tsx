@@ -10,7 +10,11 @@ type BlogCardSectionProps = {
 }
 
 async function BlogCardSection({section}:BlogCardSectionProps) {
-  const blogs = await client.fetch<BLOGS_QUERY_RESULT>(BLOGS_QUERY,{start:0,end:10});
+  const blogs = await client.fetch<BLOGS_QUERY_RESULT>(
+    BLOGS_QUERY,
+    { start: 0, end: 10 },
+    { next: { revalidate: 60 } },
+  );
   return (
     <section id={section.id} className="max-w-360 mx-auto px-5 md:px-18.75 lg:px-26">
       <div className="mt-15.75 grid  md:grid-cols-3 tablet-sm:grid-cols-2 grid-cols-1 gap-4 gap-y-10">

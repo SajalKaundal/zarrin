@@ -10,9 +10,13 @@ interface Props {
 }
 async function Page({ params }: Props) {
   const { slug } = await params;
-  const page: PAGE_QUERY_RESULT = await client.fetch(PAGE_QUERY, {
-    slug: slug ? slug?.join("/") : "home",
-  });
+  const page: PAGE_QUERY_RESULT = await client.fetch(
+    PAGE_QUERY,
+    {
+      slug: slug ? slug?.join("/") : "home",
+    },
+    { next: { revalidate: 60 } },
+  );
 
   if (!page) notFound();
 

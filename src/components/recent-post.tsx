@@ -25,8 +25,10 @@ async function RecentBlog({
     { _type: "recentPostsSection" }
   >;
 }) {
-  const recentBlogs = (
-    await client.fetch<RECENT_POST_QUERY_RESULT>(RECENT_POST_QUERY)
+  const recentBlogs = (await client.fetch<RECENT_POST_QUERY_RESULT>(
+    RECENT_POST_QUERY,
+  {},
+  { next: { revalidate: 60 } })
   )
     .filter(
       (blog) =>

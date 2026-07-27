@@ -6,7 +6,11 @@ import Section from "@/components/section";
 
 async function Page() {
 
-  const page: BLOGS_PAGE_QUERY_RESULT = await client.fetch(BLOGS_PAGE_QUERY);
+  const page: BLOGS_PAGE_QUERY_RESULT = await client.fetch(
+    BLOGS_PAGE_QUERY,
+    {},
+    { next: { revalidate: 60 } },
+  );
    if (!page) notFound();
 
   return (

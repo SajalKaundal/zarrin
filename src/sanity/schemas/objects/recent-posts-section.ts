@@ -23,6 +23,13 @@ export const recentPostsSection = defineType({
       title: "Featured Image",
       type: "customImage",
     }),
+    
+    defineField({
+      name:"isFeaturedVisible",
+      title:"Are Featured Posts Visible",
+      type: "boolean",
+      initialValue:false
+    }),
 
     defineField({
       name: "blog",

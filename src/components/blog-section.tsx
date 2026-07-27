@@ -22,9 +22,13 @@ async function BlogSection({ blogSlug, section }: BlogSectionProps) {
   if(!blogSlug){
     blogSlug = section?.blog?.slug?.current || ""
   }
-  const blog = await client.fetch<BLOG_QUERY_RESULT>(BLOG_QUERY, {
-    slug: blogSlug,
-  });
+  const blog = await client.fetch<BLOG_QUERY_RESULT>(
+    BLOG_QUERY,
+    {
+      slug: blogSlug,
+    },
+    { next: { revalidate: 60 } },
+  );
   if(!blog){
     notFound()
   }

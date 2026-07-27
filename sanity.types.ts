@@ -206,6 +206,7 @@ export type RecentPostsSection = {
   id?: string;
   label?: string;
   featuredImage?: CustomImage;
+  isFeaturedVisible?: boolean;
   blog?: BlogReference;
   ctaButton?: CtaButton;
   postCount?: number;
@@ -916,6 +917,7 @@ export type PAGE_QUERY_RESULT = {
         id?: string;
         label?: string;
         featuredImage?: CustomImage;
+        isFeaturedVisible?: boolean;
         blog: {
           _id: string;
           _type: "blog";
@@ -1236,6 +1238,7 @@ export type BLOGS_PAGE_QUERY_RESULT = {
         id?: string;
         label?: string;
         featuredImage?: CustomImage;
+        isFeaturedVisible?: boolean;
         blog: {
           _id: string;
           _type: "blog";
@@ -1556,6 +1559,7 @@ export type BLOG_PAGE_QUERY_RESULT = {
         id?: string;
         label?: string;
         featuredImage?: CustomImage;
+        isFeaturedVisible?: boolean;
         blog: {
           _id: string;
           _type: "blog";

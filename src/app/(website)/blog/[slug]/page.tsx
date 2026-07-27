@@ -8,7 +8,11 @@ import Section from "@/components/section";
 async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   
-  const page: BLOG_PAGE_QUERY_RESULT = await client.fetch(BLOG_PAGE_QUERY);
+  const page: BLOG_PAGE_QUERY_RESULT = await client.fetch(
+    BLOG_PAGE_QUERY,
+    {},
+    { next: { revalidate: 60 } },
+  );
   if (!page) notFound();
 
   return (
